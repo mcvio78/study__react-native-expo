@@ -1,8 +1,6 @@
-import React from 'react';
-import { WelcomeScreen } from "./app/screens/WelcomeScreen";
+import React from "react";
+import { ViewImageScreen } from "./app/screens/ViewImageScreen";
 
 export default function App() {
-  return (
-    <WelcomeScreen />
-  );
+  return <ViewImageScreen />;
 }
