@@ -1,6 +1,6 @@
 import React from "react";
-import { ViewImageScreen } from "./app/screens/ViewImageScreen";
+import { LoginScreen } from "./app/screens/LoginScreen";
 
 export default function App() {
-  return <ViewImageScreen />;
+  return <LoginScreen />;
 }
