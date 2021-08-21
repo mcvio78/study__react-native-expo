@@ -30,6 +30,11 @@ const styles = StyleSheet.create({
     top: 70,
     alignItems: "center",
   },
+  header: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginTop: 20,
+  },
   logo: {
     width: 100,
     height: 100,
