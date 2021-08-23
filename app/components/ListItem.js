@@ -19,6 +19,7 @@ export const ListItem = ({ title, subTitle, image }) => {
 const styles = StyleSheet.create({
   listItem: {
     flexDirection: "row",
+    padding: 15,
   },
   image: {
     width: 70,
