@@ -7,4 +7,5 @@ export const colors = {
   hintOfRed: "#f8f4f4",
   medium: "#6e6969",
   light: "#f8f4f4",
+  danger: "#ff5252",
 };
