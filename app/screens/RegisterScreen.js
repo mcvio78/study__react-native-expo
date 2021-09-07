@@ -1,29 +1,41 @@
 import React from "react";
-import { Image, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import * as Yup from "yup";
 
 import { Screen } from "../components/Screen";
-import { AppForm, AppFormField, AppFormSubmitButton } from '../components/forms'
+import {
+  AppForm,
+  AppFormField,
+  AppFormSubmitButton,
+} from "../components/forms";
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string().required().email().label("Email"),
-  password: Yup.string().required().min(4).label("Password"),
+  username: Yup.string().required().min(1).label("username"),
+  email: Yup.string().required().email().label("email"),
+  password: Yup.string().min(4).label("password"),
 });
 
-export const LoginScreen = () => {
+export const RegisterScreen = () => {
   return (
     <Screen style={styles.container}>
-      <Image style={styles.logo} source={require("../assets/logo-red.png")} />
       <AppForm
-        initialValues={{ email: "", password: "" }}
-        onSubmit={(values) => console.log(values)}
+        initialValues={{ username: "", email: "", password: "" }}
         validationSchema={validationSchema}
+        onSubmit={(values) => console.log("Register form submitted: ", values)}
       >
+        <AppFormField
+          name="username"
+          icon="account"
+          placeholder="Username"
+          capitalize="none"
+          autoCorrect={false}
+          textContentType="username"
+        />
         <AppFormField
           name="email"
           icon="email"
           placeholder="Email"
-          autoCapitalize="none"
+          capitalize="none"
           autoCorrect={false}
           keyboardType="email-address"
           textContentType="emailAddress"
@@ -32,12 +44,12 @@ export const LoginScreen = () => {
           name="password"
           icon="lock"
           placeholder="Password"
-          autoCapitalize="none"
+          capitalize="none"
           autoCorrect={false}
           textContentType="password"
           secureTextEntry
         />
-        <AppFormSubmitButton title="Login" />
+        <AppFormSubmitButton title="Register" />
       </AppForm>
     </Screen>
   );
@@ -46,12 +58,5 @@ export const LoginScreen = () => {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-  },
-  logo: {
-    width: 80,
-    height: 80,
-    alignSelf: "center",
-    marginTop: 50,
-    marginBottom: 20,
   },
 });
