@@ -9,7 +9,7 @@ export const Card = ({ title, subTitle, image, ...otherProps }) => {
     <View style={styles.cardContainer}>
       <Image style={styles.image} source={image} />
       <View style={styles.detailsContainer}>
-        <AppText style={styles.cardTitle} {...otherProps}>
+        <AppText style={styles.cardTitle} numberOfLines={1}>
           {title}
         </AppText>
         <AppText style={styles.cardSubtitle}>{subTitle}</AppText>

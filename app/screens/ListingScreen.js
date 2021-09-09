@@ -13,7 +13,8 @@ const listings = [
   },
   {
     id: 2,
-    title: "Couch in great conditionouch in great conditionouch in great conditionouch in great conditionouch in great conditionouch in great conditionouch in great conditionouch in great conditionouch in great conditionouch in great condition",
+    title:
+      "Couch in great conditionouch in great conditionouch in great conditionouch in great conditionouch in great conditionouch in great conditionouch in great conditionouch in great conditionouch in great conditionouch in great condition",
     price: 1000,
     image: require("../assets/couch.jpg"),
   },
@@ -30,7 +31,6 @@ export const ListingScreen = () => {
             title={item.title}
             subTitle={`$${item.price}`}
             image={item.image}
-            numberOfLines={3}
           />
         )}
       />
