@@ -43,6 +43,7 @@ export const MessagesScreen = () => {
             renderRightActions={() => (
               <ListItemDeleteAction onPress={() => handleDelete(item)} />
             )}
+            showChevrons
           />
         )}
         ItemSeparatorComponent={ListItemSeparator}
