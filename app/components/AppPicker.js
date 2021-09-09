@@ -20,6 +20,7 @@ export const AppPicker = ({
   items,
   selectedItem,
   onSelectedItem,
+  onClose,
 }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -49,7 +50,13 @@ export const AppPicker = ({
       </TouchableWithoutFeedback>
       <Modal visible={isModalVisible} animationType="slide">
         <Screen>
-          <Button title="Close" onPress={() => setIsModalVisible(false)} />
+          <Button
+            title="Close"
+            onPress={() => {
+              setIsModalVisible(false);
+              onClose();
+            }}
+          />
           <FlatList
             data={items}
             keyExtractor={(item) => item.value.toString()}
