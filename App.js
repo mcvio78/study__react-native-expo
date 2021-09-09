@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import { MessagesScreen } from "./app/screens/MessagesScreen";
+import { ListingScreen } from "./app/screens/ListingScreen";
 
 export default function App() {
-  return <MessagesScreen />;
+  return <ListingScreen />;
 }
