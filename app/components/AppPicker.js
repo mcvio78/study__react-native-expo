@@ -13,6 +13,7 @@ import { defaultStyles } from "../config/styles";
 import { AppText } from "./AppText";
 import { Screen } from "./Screen";
 import { PickerItem } from "./PickerItem";
+import { colors } from "../config/colors";
 
 export const AppPicker = ({
   icon,
@@ -82,5 +83,6 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 1,
+    color: colors.lightText,
   },
 });
