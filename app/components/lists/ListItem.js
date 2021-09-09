@@ -15,6 +15,7 @@ export const ListItem = ({
   renderRightActions,
   IconComponent,
   showChevrons,
+  ...otherProps
 }) => {
   return (
     <Swipeable renderRightActions={renderRightActions}>
@@ -24,7 +25,11 @@ export const ListItem = ({
           {image && <Image source={image} style={styles.image} />}
           <View style={styles.detailsContainer}>
             <AppText style={styles.title}>{title}</AppText>
-            {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
+            {subTitle && (
+              <AppText style={styles.subTitle} {...otherProps}>
+                {subTitle}
+              </AppText>
+            )}
           </View>
           {showChevrons && (
             <MaterialCommunityIcons

@@ -9,14 +9,16 @@ import { ListItemDeleteAction } from "../components/lists/ListItemDeleteAction";
 const initialMessages = [
   {
     id: 1,
-    title: "T1",
-    description: "D1",
+    title: "Title N1",
+    description:
+      "D1 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aspernatur commodi consequuntur ducimus eveniet fugit ipsa iure iusto magnam maxime minima molestiae, nisi officiis provident quasi rem ullam veritatis voluptas.",
     image: require("../assets/mauro.jpg"),
   },
   {
     id: 2,
-    title: "T2",
-    description: "D2",
+    title: "Title N2",
+    description:
+      "D2 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aspernatur commodi consequuntur ducimus eveniet fugit ipsa iure iusto magnam maxime minima molestiae, nisi officiis provident quasi rem ullam veritatis voluptas.",
     image: require("../assets/mauro.jpg"),
   },
 ];
@@ -44,6 +46,7 @@ export const MessagesScreen = () => {
               <ListItemDeleteAction onPress={() => handleDelete(item)} />
             )}
             showChevrons
+            numberOfLines={3}
           />
         )}
         ItemSeparatorComponent={ListItemSeparator}
@@ -52,14 +55,16 @@ export const MessagesScreen = () => {
           setMessages([
             {
               id: 1,
-              title: "T1",
-              description: "D1",
+              title: "Title N1",
+              description:
+                "D1 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aspernatur commodi consequuntur ducimus eveniet fugit ipsa iure iusto magnam maxime minima molestiae, nisi officiis provident quasi rem ullam veritatis voluptas.",
               image: require("../assets/mauro.jpg"),
             },
             {
               id: 2,
-              title: "T2",
-              description: "D2",
+              title: "Title N2",
+              description:
+                "D2 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aspernatur commodi consequuntur ducimus eveniet fugit ipsa iure iusto magnam maxime minima molestiae, nisi officiis provident quasi rem ullam veritatis voluptas.",
               image: require("../assets/mauro.jpg"),
             },
           ]);
