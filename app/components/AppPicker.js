@@ -13,7 +13,6 @@ import { defaultStyles } from "../config/styles";
 import { AppText } from "./AppText";
 import { Screen } from "./Screen";
 import { PickerItem } from "./PickerItem";
-import { colors } from "../config/colors";
 
 export const AppPicker = ({
   icon,
@@ -36,9 +35,11 @@ export const AppPicker = ({
               style={styles.icon}
             />
           )}
-          <AppText style={styles.text}>
-            {selectedItem ? selectedItem.label : placeholder}
-          </AppText>
+          {selectedItem ? (
+            <AppText style={styles.text}>{selectedItem.label}</AppText>
+          ) : (
+            <AppText style={styles.placeholder}>{placeholder}</AppText>
+          )}
           <MaterialCommunityIcons
             name="chevron-down"
             size={20}
@@ -83,6 +84,9 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 1,
-    color: colors.lightText,
+  },
+  placeholder: {
+    flex: 1,
+    color: defaultStyles.colors.medium,
   },
 });

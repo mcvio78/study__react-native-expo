@@ -7,14 +7,13 @@ import {
   AppForm,
   AppFormField,
   AppFormSubmitButton,
+  AppFormPicker,
 } from "../components/forms";
-import { AppFormPicker } from "../components/forms/AppFormPicker";
-import { AppPicker } from "../components/AppPicker";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("title"),
-  price: Yup.number().required().min(1).label("price"),
-  category: Yup.object().required().nullable(true).label("category"),
+  price: Yup.number().required().min(1).max(10000).label("price"),
+  category: Yup.object().required().nullable().label("category"),
   description: Yup.string().min(1).label("description"),
 });
 
@@ -42,6 +41,7 @@ export const ListingEditScreen = () => {
           placeholder="Title"
           capitalize="none"
           autoCorrect={false}
+          maxLength={255}
         />
         <AppFormField
           name="price"
@@ -49,10 +49,11 @@ export const ListingEditScreen = () => {
           capitalize="none"
           autoCorrect={false}
           keyboardType="numeric"
+          maxLength={8} // 10000.99
         />
         <AppFormPicker
           name="category"
-          placeholder="category"
+          placeholder="Category"
           items={categories}
         />
         <AppFormField
@@ -60,6 +61,9 @@ export const ListingEditScreen = () => {
           placeholder="Description"
           capitalize="none"
           autoCorrect={false}
+          maxLength={255}
+          multiline // android only
+          numberOfLines={3}
         />
         <AppFormSubmitButton title="post" />
       </AppForm>

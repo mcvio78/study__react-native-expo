@@ -9,5 +9,4 @@ export const colors = {
   medium: "#6e6969",
   dark: "#0c0c0c",
   danger: "#ff5252",
-  lightText: '#949090'
 };
