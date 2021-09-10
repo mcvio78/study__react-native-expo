@@ -50,11 +50,13 @@ export const ListingEditScreen = () => {
           autoCorrect={false}
           keyboardType="numeric"
           maxLength={8} // 10000.99
+          width={120}
         />
         <AppFormPicker
           name="category"
           placeholder="Category"
           items={categories}
+          width="50%"
         />
         <AppFormField
           name="description"
