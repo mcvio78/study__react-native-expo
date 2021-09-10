@@ -22,6 +22,7 @@ export const AppPicker = ({
   onSelectedItem,
   onClose,
   width = "100%",
+  PickerItemComponent = PickerItem,
 }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -62,7 +63,7 @@ export const AppPicker = ({
             data={items}
             keyExtractor={(item) => item.value.toString()}
             renderItem={({ item }) => (
-              <PickerItem
+              <PickerItemComponent
                 label={item.label}
                 onPress={() => {
                   setIsModalVisible(false);
