@@ -26,7 +26,7 @@ export const ListItem = ({
           <View style={styles.detailsContainer}>
             <AppText style={styles.title} numberOfLines={1}>{title}</AppText>
             {subTitle && (
-              <AppText style={styles.subTitle} numberOfLines={3}>
+              <AppText style={styles.subTitle} numberOfLines={2}>
                 {subTitle}
               </AppText>
             )}
