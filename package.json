@@ -7,7 +7,9 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "format": "prettier --write app/**/*.js{,x}",
-    "lint": "eslint app/**/*.js{,x}"
+    "lint:check": "eslint app/**/*.js{,x}",
+    "rules-conflicts": "npx eslint-config-prettier ./App.jsx",
+    "check-code": "eslint \"app/**/*.{js,jsx}\" && prettier --check \"app/**/*.{js,jsx}\""
   },
   "dependencies": {
     "expo": "~42.0.1",
@@ -30,7 +32,9 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.25.1",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "2.3.2"
+    "husky": "^4.3.8",
+    "lint-staged": "^10.5.1",
+    "prettier": "^2.3.2"
   },
   "private": true
 }

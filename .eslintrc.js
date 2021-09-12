@@ -7,7 +7,12 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:react-hooks/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:react/jsx-runtime',
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -19,6 +24,8 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     'react/prop-types': 'off',
+    'react/jsx-uses-react': 'error',
+    'react/jsx-uses-vars': 'error',
     'no-use-before-define': [
       'error',
       {
@@ -26,14 +33,10 @@ module.exports = {
       },
     ],
     'import/prefer-default-export': 'off',
-    'object-curly-newline': [
-      'error',
-      {
-        ExportDeclaration: {
-          multiline: false,
-        },
-      },
-    ],
+    'object-curly-newline': 'off',
     'react/jsx-props-no-spreading': 'off',
+    'no-extra-semi': 'off',
+    'no-mixed-spaces-and-tabs': 'off',
+    'no-unexpected-multiline': 'off',
   },
 };
