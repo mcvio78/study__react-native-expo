@@ -1,6 +1,9 @@
 module.exports = {
   settings: {
     'import/core-modules': ['@expo/vector-icons'],
+    react: {
+      version: 'detect',
+    },
   },
   env: {
     browser: true,
