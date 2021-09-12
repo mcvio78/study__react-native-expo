@@ -1,18 +1,11 @@
-import React, { useState } from "react";
-import {
-  Button,
-  FlatList,
-  Modal,
-  StyleSheet,
-  TouchableWithoutFeedback,
-  View,
-} from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import React, { useState } from 'react';
+import { Button, FlatList, Modal, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import { defaultStyles } from "../config/styles";
-import { AppText } from "./AppText";
-import { Screen } from "./Screen";
-import { PickerItem } from "./PickerItem";
+import { defaultStyles } from '../config/styles';
+import { AppText } from './AppText';
+import { Screen } from './Screen';
+import { PickerItem } from './PickerItem';
 
 export const AppPicker = ({
   icon,
@@ -21,7 +14,7 @@ export const AppPicker = ({
   selectedItem,
   onSelectedItem,
   onClose,
-  width = "100%",
+  width = '100%',
   PickerItemComponent = PickerItem,
   numberOfColumns = 1,
 }) => {
@@ -30,7 +23,7 @@ export const AppPicker = ({
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setIsModalVisible(true)}>
-        <View style={[styles.container, { width: width }]}>
+        <View style={[styles.container, { width }]}>
           {icon && (
             <MaterialCommunityIcons
               name={icon}
@@ -83,8 +76,8 @@ export const AppPicker = ({
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     padding: 15,
     marginVertical: 10,
     borderRadius: 25,
