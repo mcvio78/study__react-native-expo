@@ -1,5 +1,6 @@
 import React from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
+
 import { Screen } from '../components/Screen';
 import { Card } from '../components/Card';
 import { colors } from '../config/colors';
@@ -22,14 +23,15 @@ const listings = [
 
 export const ListingScreen = () => (
   <Screen style={styles.screen}>
-    <FlatList
-      style={styles.content}
-      data={listings}
-      keyExtractor={(listing) => listing.id.toString()}
-      renderItem={({ item }) => (
-        <Card title={item.title} subTitle={`$${item.price}`} image={item.image} />
-      )}
-    />
+    <View style={styles.content}>
+      <FlatList
+        data={listings}
+        keyExtractor={(listing) => listing.id.toString()}
+        renderItem={({ item }) => (
+          <Card title={item.title} subTitle={`$${item.price}`} image={item.image} />
+        )}
+      />
+    </View>
   </Screen>
 );
 
