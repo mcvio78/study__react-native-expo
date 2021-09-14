@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import * as ImagePicker from 'expo-image-picker';
 
-import { ListingScreen } from './app/screens/ListingScreen';
+import { Screen } from './app/components/Screen';
 
 export default function App() {
-  return <ListingScreen />;
+  const requestPermission = async () => {
+    const { granted } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (!granted) alert('You need to enable permissions to access the library');
+  };
+
+  useEffect(() => {
+    requestPermission();
+  }, []);
+
+  return <Screen />;
 }
