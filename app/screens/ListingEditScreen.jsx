@@ -3,10 +3,17 @@ import { StyleSheet } from 'react-native';
 import * as Yup from 'yup';
 
 import { Screen } from '../components/Screen';
-import { AppForm, AppFormField, AppFormSubmitButton, AppFormPicker } from '../components/forms';
+import {
+  AppForm,
+  AppFormField,
+  AppFormSubmitButton,
+  AppFormPicker,
+  FormImagePicker,
+} from '../components/forms';
 import { CategoryPickerItem } from '../components/CategoryPickerItem';
 
 const validationSchema = Yup.object().shape({
+  images: Yup.array().required().min(1).label('images'),
   title: Yup.string().required().min(1).label('title'),
   price: Yup.number().required().min(1).max(10000).label('price'),
   category: Yup.object().required().nullable().label('category'),
@@ -58,54 +65,58 @@ const categories = [
   },
 ];
 
-export const ListingEditScreen = () => (
-  <Screen style={styles.container}>
-    <AppForm
-      initialValues={{
-        title: '',
-        price: '',
-        category: null,
-        description: '',
-      }}
-      onSubmit={(values) => console.log('Results: ', values)}
-      validationSchema={validationSchema}>
-      <AppFormField
-        name="title"
-        placeholder="Title"
-        capitalize="none"
-        autoCorrect={false}
-        maxLength={255}
-      />
-      <AppFormField
-        name="price"
-        placeholder="Price"
-        capitalize="none"
-        autoCorrect={false}
-        keyboardType="numeric"
-        maxLength={8} // 10000.99
-        width={120}
-      />
-      <AppFormPicker
-        name="category"
-        placeholder="Category"
-        items={categories}
-        width="50%"
-        PickerItemComponent={CategoryPickerItem}
-        numberOfColumns={3}
-      />
-      <AppFormField
-        name="description"
-        placeholder="Description"
-        capitalize="none"
-        autoCorrect={false}
-        maxLength={255}
-        multiline // android only
-        numberOfLines={3}
-      />
-      <AppFormSubmitButton title="post" />
-    </AppForm>
-  </Screen>
-);
+export const ListingEditScreen = () => {
+  return (
+    <Screen style={styles.container}>
+      <AppForm
+        initialValues={{
+          images: [],
+          title: '',
+          price: '',
+          category: null,
+          description: '',
+        }}
+        onSubmit={(values) => console.log('Results: ', values)}
+        validationSchema={validationSchema}>
+        <FormImagePicker name="images" />
+        <AppFormField
+          name="title"
+          placeholder="Title"
+          capitalize="none"
+          autoCorrect={false}
+          maxLength={255}
+        />
+        <AppFormField
+          name="price"
+          placeholder="Price"
+          capitalize="none"
+          autoCorrect={false}
+          keyboardType="numeric"
+          maxLength={8} // 10000.99
+          width={120}
+        />
+        <AppFormPicker
+          name="category"
+          placeholder="Category"
+          items={categories}
+          width="50%"
+          PickerItemComponent={CategoryPickerItem}
+          numberOfColumns={3}
+        />
+        <AppFormField
+          name="description"
+          placeholder="Description"
+          capitalize="none"
+          autoCorrect={false}
+          maxLength={255}
+          multiline // android only
+          numberOfLines={3}
+        />
+        <AppFormSubmitButton title="post" />
+      </AppForm>
+    </Screen>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
