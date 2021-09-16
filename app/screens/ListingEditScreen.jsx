@@ -13,7 +13,7 @@ import {
 import { CategoryPickerItem } from '../components/CategoryPickerItem';
 
 const validationSchema = Yup.object().shape({
-  images: Yup.array().required().min(1).label('images'),
+  images: Yup.array().min(1).label('images'),
   title: Yup.string().required().min(1).label('title'),
   price: Yup.number().required().min(1).max(10000).label('price'),
   category: Yup.object().required().nullable().label('category'),
