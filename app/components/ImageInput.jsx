@@ -12,25 +12,6 @@ export const ImageInput = ({
   onChangeImage,
   imageUri,
 }) => {
-  // data from (await) ImagePicker.requestMediaLibraryPermissionsAsync()
-  // data:  Object {
-  //   "canAskAgain": true,
-  //     "expires": "never",
-  //     "granted": true,
-  //     "status": "granted",
-  // }
-
-  // Mosh
-  // useEffect(() => {
-  //   requestPermission();
-  // }, []);
-  //
-  // const requestPermission = async () => {
-  //   const { granted } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-  //   if (!granted) alert('You need to enable permission to access the library.');
-  // };
-
-  // official docs
   useEffect(() => {
     (async () => {
       if (Platform.OS !== 'web') {
