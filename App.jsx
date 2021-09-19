@@ -35,10 +35,16 @@ const TweetDetails = ({ route }) => {
 };
 
 const Stack = createStackNavigator();
+
 const StackNavigator = () => (
   <Stack.Navigator>
     <Stack.Screen name="tweets" component={Tweets} />
-    <Stack.Screen name="TweetDetails" component={TweetDetails} />
+    <Stack.Screen
+      name="TweetDetails"
+      component={TweetDetails}
+      // options={{ title: 'Tweet Details' }}
+      options={({ route }) => ({ title: `Page id ${route.params.id}` })}
+    />
   </Stack.Navigator>
 );
 
