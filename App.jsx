@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { NavigationContainer, useNavigation, useRoute } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { Button } from 'react-native';
@@ -8,7 +8,12 @@ import { Screen } from './app/components/Screen';
 
 const Link = () => {
   const navigation = useNavigation();
-  return <Button title="Click" onPress={() => navigation.navigate('TweetDetails')} />;
+  return <Button title="Click" onPress={() => navigation.navigate('TweetDetails', { id: 1 })} />;
+};
+
+const ChildComponent = () => {
+  const route = useRoute();
+  return <Text>This is the route params inside child: {route.params.id}</Text>;
 };
 
 const Tweets = () => {
@@ -20,10 +25,11 @@ const Tweets = () => {
   );
 };
 
-const TweetDetails = () => {
+const TweetDetails = ({ route }) => {
   return (
     <Screen>
-      <Text>Tweets details</Text>
+      <Text>Tweets details {route.params.id}</Text>
+      <ChildComponent />
     </Screen>
   );
 };
