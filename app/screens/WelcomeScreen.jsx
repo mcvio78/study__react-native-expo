@@ -3,21 +3,27 @@ import { ImageBackground, StyleSheet, View, Image, Text } from 'react-native';
 
 import { AppButton } from '../components/AppButton';
 
-export const WelcomeScreen = () => (
-  <ImageBackground
-    blurRadius={10}
-    style={styles.background}
-    source={require('../assets/background.jpg')}>
-    <View style={styles.logoContainer}>
-      <Image style={styles.logo} source={require('../assets/logo-red.png')} />
-      <Text style={styles.tagline}>Sell What You Don&apos;t Need</Text>
-    </View>
-    <View style={styles.ButtonsContainer}>
-      <AppButton title="login" />
-      <AppButton title="register" color="secondary" />
-    </View>
-  </ImageBackground>
-);
+export const WelcomeScreen = ({ navigation }) => {
+  return (
+    <ImageBackground
+      blurRadius={10}
+      style={styles.background}
+      source={require('../assets/background.jpg')}>
+      <View style={styles.logoContainer}>
+        <Image style={styles.logo} source={require('../assets/logo-red.png')} />
+        <Text style={styles.tagline}>Sell What You Don&apos;t Need</Text>
+      </View>
+      <View style={styles.ButtonsContainer}>
+        <AppButton title="login" onPress={() => navigation.navigate('login')} />
+        <AppButton
+          title="register"
+          color="secondary"
+          onPress={() => navigation.navigate('register')}
+        />
+      </View>
+    </ImageBackground>
+  );
+};
 
 const styles = StyleSheet.create({
   background: {
