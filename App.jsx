@@ -9,7 +9,9 @@ import { Screen } from './app/components/Screen';
 
 const Link = () => {
   const navigation = useNavigation();
-  return <Button title="Click" onPress={() => navigation.navigate('TweetDetails', { id: 1 })} />;
+  return (
+    <Button title="See tweets" onPress={() => navigation.navigate('TweetDetails', { id: 1 })} />
+  );
 };
 
 const ChildComponent = () => {
@@ -20,7 +22,7 @@ const ChildComponent = () => {
 const Tweets = () => {
   return (
     <Screen>
-      <Text>Tweets main page</Text>
+      <Text>Tweets</Text>
       <Link />
     </Screen>
   );
@@ -35,26 +37,38 @@ const TweetDetails = ({ route }) => {
   );
 };
 
-const Account = () => (
+const AccountNavigator = () => (
   <Screen>
     <Text>Account</Text>
   </Screen>
 );
 
 const Stack = createStackNavigator();
-const StackNavigator = () => (
-  /* eslint-disable-line */
-  <Stack.Navigator screenOptions={{ headerStyle: { backgroundColor: 'tomato' } }}>
-    <Stack.Screen name="tweets" component={Tweets} />
-    <Stack.Screen name="TweetDetails" component={TweetDetails} />
+const FeedNavigator = () => (
+  <Stack.Navigator>
+    <Stack.Screen name="tweets" component={Tweets} options={{ title: 'Tweeds' }} />
+    <Stack.Screen
+      name="TweetDetails"
+      component={TweetDetails}
+      options={{ title: 'Tweet details' }}
+    />
   </Stack.Navigator>
 );
 
 const Tab = createBottomTabNavigator();
 const TabNavigator = () => (
-  <Tab.Navigator>
-    <Tab.Screen name="Tweets" component={Tweets} />
-    <Tab.Screen name="Account" component={Account} />
+  <Tab.Navigator
+    screenOptions={{
+      tabBarLabelPosition: 'beside-icon',
+      tabBarLabelStyle: {
+        fontWeight: '700',
+        fontSize: 15,
+      },
+      tabBarIconStyle: { display: 'none' },
+      headerShown: false,
+    }}>
+    <Tab.Screen name="Feed" component={FeedNavigator} />
+    <Tab.Screen name="Account" component={AccountNavigator} />
   </Tab.Navigator>
 );
 
