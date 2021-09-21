@@ -21,10 +21,11 @@ const menuItems = [
       name: 'email',
       backgroundColor: colors.secondary,
     },
+    targetScreen: 'messages',
   },
 ];
 
-export const AccountScreen = () => (
+export const AccountScreen = ({ navigation }) => (
   <Screen style={styles.screen}>
     <View style={styles.container}>
       <ListItem title="Mauro Vio" subTitle="mc@gmail.com" image={require('../assets/mauro.jpg')} />
@@ -40,6 +41,7 @@ export const AccountScreen = () => (
             IconComponent={
               <Icon name={item.icon.name} backgroundColor={item.icon.backgroundColor} />
             }
+            onPress={() => navigation.navigate(item.targetScreen)}
           />
         )}
       />
