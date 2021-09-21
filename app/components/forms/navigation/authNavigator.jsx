@@ -4,19 +4,20 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { WelcomeScreen } from '../../../screens/WelcomeScreen';
 import { LoginScreen } from '../../../screens/LoginScreen';
 import { RegisterScreen } from '../../../screens/RegisterScreen';
+import { routes } from './routes/routes';
 
 const Stack = createStackNavigator();
 
 export const AuthNavigator = () => (
   <Stack.Navigator>
     <Stack.Screen
-      name="welcome"
+      name={routes.WELCOME}
       component={WelcomeScreen}
       options={{
         headerShown: false,
       }}
     />
-    <Stack.Screen name="login" component={LoginScreen} />
-    <Stack.Screen name="register" component={RegisterScreen} />
+    <Stack.Screen name={routes.LOGIN} component={LoginScreen} />
+    <Stack.Screen name={routes.REGISTER} component={RegisterScreen} />
   </Stack.Navigator>
 );
