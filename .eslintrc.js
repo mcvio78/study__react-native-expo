@@ -41,5 +41,6 @@ module.exports = {
     'no-extra-semi': 'off',
     'no-mixed-spaces-and-tabs': 'off',
     'no-unexpected-multiline': 'off',
+    'react/display-name': 'off',
   },
 };

@@ -7,11 +7,10 @@ import { ListingScreen } from '../../../screens/ListingScreen';
 const Stack = createStackNavigator();
 
 export const FeedNavigator = () => (
-  <Stack.Navigator>
+  <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="listing" component={ListingScreen} />
     <Stack.Screen
       options={{
-        headerShown: false,
         presentation: 'modal',
         gestureEnabled: true,
         gestureResponseDistance: 500,
