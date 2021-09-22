@@ -43,4 +43,5 @@ module.exports = {
     'no-unexpected-multiline': 'off',
     'react/display-name': 'off',
   },
+  ignorePatterns: ['backend/*', 'node_modules/*'],
 };
