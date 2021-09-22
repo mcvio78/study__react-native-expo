@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { FeedNavigator } from './feedNavigator';
-import { ListingEditScreen } from '../../../screens/ListingEditScreen';
+import { ListingEditScreen } from '../screens/ListingEditScreen';
 import { AccountNavigator } from './accountNavigator';
 import { NewListingButton } from './NewListingButton';
 import { routes } from './routes/routes';

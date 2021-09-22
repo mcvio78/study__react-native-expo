@@ -2,7 +2,7 @@ import React from 'react';
 import { ImageBackground, StyleSheet, View, Image, Text } from 'react-native';
 
 import { AppButton } from '../components/AppButton';
-import { routes } from '../components/forms/navigation/routes/routes';
+import { routes } from '../navigation/routes/routes';
 
 export const WelcomeScreen = ({ navigation }) => {
   return (
