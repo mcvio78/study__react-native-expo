@@ -42,6 +42,7 @@ module.exports = {
     'no-mixed-spaces-and-tabs': 'off',
     'no-unexpected-multiline': 'off',
     'react/display-name': 'off',
+    'react/no-unescaped-entities': 'off',
   },
   ignorePatterns: ['backend/*', 'node_modules/*'],
 };
