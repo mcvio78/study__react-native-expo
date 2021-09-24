@@ -5,40 +5,38 @@ import { Screen } from '../components/Screen';
 import { Card } from '../components/Card';
 import { colors } from '../config/colors';
 import { routes } from '../navigation/routes/routes';
-import { listingsAPI } from '../api/listings';
-
-// const listings = [
-//   {
-//     id: 1,
-//     title: 'Red jacket for sale',
-//     price: 100,
-//     image: require('../assets/jacket.jpg'),
-//   },
-//   {
-//     id: 2,
-//     title: 'Couch in great condition',
-//     price: 1000,
-//     image: require('../assets/couch.jpg'),
-//   },
-// ];
+import { getListings } from '../api/listings';
+import { AppText } from '../components/AppText';
+import { AppButton } from '../components/AppButton';
 
 export const ListingScreen = ({ navigation }) => {
   const [listings, setListings] = useState([]);
+  const [error, setError] = useState(false);
+
+  const loadListing = async () => {
+    try {
+      const { data } = await getListings();
+      setListings(data);
+      setError(false);
+    } catch (err) {
+      console.log('Error fetching data: ', err.message);
+      setError(true);
+    }
+  };
 
   useEffect(() => {
-    (async () => {
-      try {
-        const { data } = await listingsAPI.getListings;
-        setListings(data);
-      } catch (error) {
-        console.log('Error fetching data: ', error);
-      }
-    })();
+    loadListing();
   }, []);
 
   return (
     <Screen style={styles.screen}>
       <View style={styles.content}>
+        {error && (
+          <>
+            <AppText>Couldn't retrieve the listings.</AppText>
+            <AppButton title="Retry" onPress={() => loadListing()} />
+          </>
+        )}
         <FlatList
           data={listings}
           keyExtractor={(listing) => listing.id.toString()}
