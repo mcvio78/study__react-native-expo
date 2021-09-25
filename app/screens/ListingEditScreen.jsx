@@ -70,7 +70,7 @@ export const ListingEditScreen = () => {
   const location = useLocation();
 
   return (
-    <Screen style={styles.container}>
+    <Screen style={styles.screen}>
       <AppForm
         initialValues={{
           images: [],
@@ -79,7 +79,7 @@ export const ListingEditScreen = () => {
           category: null,
           description: '',
         }}
-        onSubmit={() => console.log('Results: ', location)}
+        onSubmit={(values) => console.log('Results: ', location, 'Form: ', values)}
         validationSchema={validationSchema}>
         <FormImagePicker name="images" />
         <AppFormField
@@ -122,7 +122,7 @@ export const ListingEditScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  screen: {
     padding: 10,
   },
 });

@@ -15,7 +15,7 @@ export const ListingScreen = ({ navigation }) => {
   const { request: loadListing, data: listings, error, loading } = useAPI(listingsAPI.getListings);
 
   useEffect(() => {
-    loadListing();
+    loadListing(1, 2, 3);
   }, []);
 
   return (

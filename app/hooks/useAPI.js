@@ -5,10 +5,10 @@ export const useAPI = (apiFunc) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const request = async () => {
+  const request = async (...args) => {
     try {
       setLoading(true);
-      const { data } = await apiFunc();
+      const { data } = await apiFunc(...args);
       setLoading(false);
       setError(false);
       setData(data);
