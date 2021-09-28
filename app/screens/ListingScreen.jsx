@@ -31,14 +31,17 @@ export const ListingScreen = ({ navigation }) => {
         <FlatList
           data={listings}
           keyExtractor={(listing) => listing.id.toString()}
-          renderItem={({ item }) => (
-            <Card
-              title={item.title}
-              subTitle={`$${item.price}`}
-              imageURL={item.images[0].url}
-              onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
-            />
-          )}
+          renderItem={({ item }) => {
+            // console.log('item: ', item);
+            return (
+              <Card
+                title={item.title}
+                subTitle={`$${item.price}`}
+                imageURL={item.images[0].url}
+                onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
+              />
+            );
+          }}
         />
       )}
     </Screen>
