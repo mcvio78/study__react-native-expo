@@ -6,6 +6,12 @@ import { TabNavigator } from './app/navigation/tabNavigator';
 import { customTheme } from './app/navigation/theme/navigarionTheme';
 
 export default function App() {
+  // Reactotron
+  /* eslint-disable-next-line */
+  if (__DEV__) {
+    import('./ReactotronConfig').then(() => console.log('Reactotron Configured'));
+  }
+
   return (
     <NavigationContainer theme={customTheme}>
       <TabNavigator />
