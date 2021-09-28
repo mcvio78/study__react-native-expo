@@ -1,6 +1,10 @@
 import axios from 'axios';
 
+import getEnvVars from '../../environment';
+
+const { apiUrl } = getEnvVars();
+
 export const apiClient = axios.create({
-  baseURL: 'http://192.168.1.15:9000/api',
+  baseURL: apiUrl,
   timeout: 5000,
 });

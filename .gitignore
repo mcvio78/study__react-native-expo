@@ -18,3 +18,4 @@ web-build/
 /.idea/libraries/react_native.xml
 /.idea/studyReactNativeExpo.iml
 /.idea/vcs.xml
+/environment.js

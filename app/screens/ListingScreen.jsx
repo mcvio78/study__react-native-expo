@@ -16,6 +16,7 @@ export const ListingScreen = ({ navigation }) => {
 
   useEffect(() => {
     loadListing(1, 2, 3);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
