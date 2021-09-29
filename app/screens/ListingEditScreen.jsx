@@ -84,8 +84,6 @@ export const ListingEditScreen = () => {
         },
         (progress) => setProgressUpload(progress),
       );
-      setUploadVisible(false);
-      alert('Success');
     } catch (error) {
       setUploadVisible(false);
       alert(`Could not save the listing: \n ${error.message}`);
@@ -94,7 +92,11 @@ export const ListingEditScreen = () => {
 
   return (
     <Screen style={styles.screen}>
-      <UploadScreen visible={uploadVisible} progress={progressUpload} />
+      <UploadScreen
+        visible={uploadVisible}
+        progress={progressUpload}
+        onAnimationFinish={() => setUploadVisible(false)}
+      />
       <AppForm
         initialValues={{
           images: [],
