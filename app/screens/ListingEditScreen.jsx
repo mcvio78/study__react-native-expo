@@ -73,7 +73,7 @@ export const ListingEditScreen = () => {
   const [uploadVisible, setUploadVisible] = useState(false);
   const [progressUpload, setProgressUpload] = useState(0);
 
-  const handleSubmit = async (listing) => {
+  const handleSubmit = async (listing, { resetForm }) => {
     try {
       setProgressUpload(0);
       setUploadVisible(true);
@@ -84,6 +84,7 @@ export const ListingEditScreen = () => {
         },
         (progress) => setProgressUpload(progress),
       );
+      resetForm();
     } catch (error) {
       setUploadVisible(false);
       alert(`Could not save the listing: \n ${error.message}`);
@@ -105,7 +106,7 @@ export const ListingEditScreen = () => {
           category: null,
           description: '',
         }}
-        onSubmit={(values) => handleSubmit(values)}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}>
         <FormImagePicker name="images" />
         <AppFormField
