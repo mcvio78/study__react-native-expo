@@ -72,10 +72,13 @@ export const ListingEditScreen = () => {
 
   const handleSubmit = async (listing) => {
     try {
-      await listingsAPI.addListing({
-        ...listing,
-        location: location,
-      });
+      await listingsAPI.addListing(
+        {
+          ...listing,
+          location: location,
+        },
+        (progress) => console.log('progress: ', progress),
+      );
       alert('Success');
     } catch (error) {
       alert(`Could not save the listing: \n ${error.message}`);

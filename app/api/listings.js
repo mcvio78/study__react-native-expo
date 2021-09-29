@@ -5,17 +5,7 @@ const endpoint = '/listings';
 /* eslint-disable-next-line */
 const getListings = (a, b, c) => apiClient.get(endpoint);
 
-const config = {
-  headers: {
-    'content-type': 'multipart/form-data',
-  },
-  onUploadProgress: (progressEvent) => {
-    let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-    console.log(percentCompleted);
-  },
-};
-
-const addListing = (listing) => {
+const addListing = (listing, onUploadProgress) => {
   const data = new FormData();
   data.append('title', listing.title);
   data.append('description', listing.description);
@@ -32,7 +22,11 @@ const addListing = (listing) => {
 
   if (listing.location) data.append('location', JSON.stringify(listing.location));
 
-  return apiClient.post(endpoint, data, config);
+  return apiClient.post(endpoint, data, {
+    onUploadProgress: (progress) => {
+      onUploadProgress(progress.loaded / progress.total);
+    },
+  });
 };
 
 export const listingsAPI = { getListings, addListing };
