@@ -2,7 +2,7 @@ import { apiClient } from './client';
 
 const endpoint = '/listings';
 
-/* eslint-disable */
+/* eslint-disable-next-line */
 const getListings = (a, b, c) => apiClient.get(endpoint);
 
 const config = {
@@ -32,8 +32,7 @@ const addListing = (listing) => {
 
   if (listing.location) data.append('location', JSON.stringify(listing.location));
 
-  return apiClient.post(endpoint, data);
+  return apiClient.post(endpoint, data, config);
 };
-/* eslint-enable */
 
 export const listingsAPI = { getListings, addListing };
