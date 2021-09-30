@@ -45,4 +45,9 @@ module.exports = {
     'react/no-unescaped-entities': 'off',
   },
   ignorePatterns: ['backend/*', 'node_modules/*'],
+  globals: {
+    __CLIENT__: true,
+    __SERVER__: true,
+    __DEV__: true,
+  },
 };
