@@ -12,9 +12,9 @@ export const useAPI = (apiFunc) => {
       setLoading(false);
       setError(false);
       setData(data);
-    } catch (err) {
+    } catch (error) {
       setLoading(false);
-      console.log('Error fetching data: ', err.message);
+      console.log('Error fetching data: ', error.message);
       setError(true);
     }
   };

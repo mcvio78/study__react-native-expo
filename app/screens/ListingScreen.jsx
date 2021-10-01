@@ -33,7 +33,6 @@ export const ListingScreen = ({ navigation }) => {
           data={listings}
           keyExtractor={(listing) => listing.id.toString()}
           renderItem={({ item }) => {
-            // console.log('item: ', item);
             return (
               <Card
                 title={item.title}
