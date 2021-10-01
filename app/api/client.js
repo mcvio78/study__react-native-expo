@@ -47,8 +47,11 @@ apiClient.get = async (url, params) => {
       return response;
     }
   } catch (error) {
-    if (error === undefined) alert('USING CACHE: \nwrong endpoint or server turned off');
-    else if (error.status) alert(`USING CACHE: \nError fetching, status code: ${error.status}`);
+    if (error === undefined) {
+      console.log('USING CACHE: \nwrong endpoint or server turned off');
+    } else if (error.status) {
+      console.log(`USING CACHE: \nError fetching, status code: ${error.status}`);
+    }
 
     const data = await cache.get(url);
     return data ? { status: 200, data: data } : error;
