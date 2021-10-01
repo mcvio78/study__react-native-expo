@@ -38,6 +38,7 @@ export const ListingScreen = ({ navigation }) => {
                 title={item.title}
                 subTitle={`$${item.price}`}
                 imageURL={item.images[0].url}
+                thumbnailURL={item.images[0].thumbnailUrl}
                 onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
               />
             );
