@@ -3,3 +3,4 @@ export { AppFormField } from './AppFormField';
 export { AppFormSubmitButton } from './AppFormSubmitButton';
 export { AppFormPicker } from './AppFormPicker';
 export { FormImagePicker } from './FormImagePicker';
+export { AppErrorMessage } from './AppErrorMessage';
