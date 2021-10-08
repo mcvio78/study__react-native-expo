@@ -2,9 +2,10 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
 // import { AuthNavigator } from './app/components/forms/navigation/authNavigator';
-import { TabNavigator } from './app/navigation/tabNavigator';
+// import { TabNavigator } from './app/navigation/tabNavigator';
 import { customTheme } from './app/navigation/theme/navigarionTheme';
 import { OfflineNotice } from './app/components/OfflineNotice';
+import { LoginScreen } from './app/screens/LoginScreen';
 
 export default function App() {
   // Reactotron
@@ -15,7 +16,7 @@ export default function App() {
   return (
     <>
       <NavigationContainer theme={customTheme}>
-        <TabNavigator />
+        <LoginScreen />
       </NavigationContainer>
       <OfflineNotice />
     </>

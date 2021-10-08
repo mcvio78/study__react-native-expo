@@ -22,7 +22,7 @@ export const ListingScreen = ({ navigation }) => {
   return (
     <Screen style={styles.screen}>
       <ActivityIndicator visible={loading} />
-      {error && (
+      {error.isError && (
         <>
           <AppText>Couldn't retrieve the listings.</AppText>
           <AppButton title="Retry" onPress={() => loadListing()} />
