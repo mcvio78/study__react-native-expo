@@ -15,14 +15,14 @@ const validationSchema = Yup.object().shape({
 
 export const LoginScreen = () => {
   const [error, setError] = useState('');
-  const authContext = useContext(AuthContext);
+  const { setUser } = useContext(AuthContext);
 
   const handleSubmit = async ({ email, password }) => {
     try {
       const result = await authAPI.login(email, password);
       setError('');
       const user = jwtDecode(result.data);
-      authContext.setUser(user);
+      setUser(user);
     } catch (err) {
       setError(err.data.error);
     }
