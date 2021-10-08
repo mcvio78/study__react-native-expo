@@ -1,12 +1,12 @@
-import React from 'react';
-import { Image, StyleSheet } from 'react-native';
+import React, { useContext, useState } from 'react';
+import { Image, StyleSheet, ScrollView } from 'react-native';
 import * as Yup from 'yup';
 import jwtDecode from 'jwt-decode';
 
 import { Screen } from '../components/Screen';
 import { AppForm, AppFormField, AppFormSubmitButton, AppErrorMessage } from '../components/forms';
 import { authAPI } from '../api/auth';
-import { useAPI } from '../hooks/useAPI';
+import { AuthContext } from '../auth/context';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label('Email'),
@@ -14,42 +14,50 @@ const validationSchema = Yup.object().shape({
 });
 
 export const LoginScreen = () => {
-  const { request, data, error } = useAPI(authAPI.login);
+  const [error, setError] = useState('');
+  const authContext = useContext(AuthContext);
 
-  const handleSubmit = ({ email, password }) => {
-    request(email, password);
-    const user = jwtDecode(data);
-    console.log('user: ', user);
+  const handleSubmit = async ({ email, password }) => {
+    try {
+      const result = await authAPI.login(email, password);
+      setError('');
+      const user = jwtDecode(result.data);
+      authContext.setUser(user);
+    } catch (err) {
+      setError(err.data.error);
+    }
   };
 
   return (
     <Screen style={styles.container}>
-      <Image style={styles.logo} source={require('../assets/logo-red.png')} />
-      <AppForm
-        initialValues={{ email: '', password: '' }}
-        onSubmit={(values) => handleSubmit(values)}
-        validationSchema={validationSchema}>
-        <AppErrorMessage error={error.errorMessage} touched />
-        <AppFormField
-          name="email"
-          icon="email"
-          placeholder="Email"
-          autoCapitalize="none"
-          autoCorrect={false}
-          keyboardType="email-address"
-          textContentType="emailAddress"
-        />
-        <AppFormField
-          name="password"
-          icon="lock"
-          placeholder="Password"
-          autoCapitalize="none"
-          autoCorrect={false}
-          textContentType="password"
-          secureTextEntry
-        />
-        <AppFormSubmitButton title="Login" />
-      </AppForm>
+      <ScrollView>
+        <Image style={styles.logo} source={require('../assets/logo-red.png')} />
+        <AppForm
+          initialValues={{ email: '', password: '' }}
+          onSubmit={(values) => handleSubmit(values)}
+          validationSchema={validationSchema}>
+          <AppErrorMessage error={error} touched />
+          <AppFormField
+            name="email"
+            icon="email"
+            placeholder="Email"
+            autoCapitalize="none"
+            autoCorrect={false}
+            keyboardType="email-address"
+            textContentType="emailAddress"
+          />
+          <AppFormField
+            name="password"
+            icon="lock"
+            placeholder="Password"
+            autoCapitalize="none"
+            autoCorrect={false}
+            textContentType="password"
+            secureTextEntry
+          />
+          <AppFormSubmitButton title="Login" />
+        </AppForm>
+      </ScrollView>
     </Screen>
   );
 };
