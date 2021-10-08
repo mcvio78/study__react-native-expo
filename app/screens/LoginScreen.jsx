@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 import * as Yup from 'yup';
+import jwtDecode from 'jwt-decode';
 
 import { Screen } from '../components/Screen';
 import { AppForm, AppFormField, AppFormSubmitButton, AppErrorMessage } from '../components/forms';
@@ -13,10 +14,12 @@ const validationSchema = Yup.object().shape({
 });
 
 export const LoginScreen = () => {
-  const { request, error } = useAPI(authAPI.login);
+  const { request, data, error } = useAPI(authAPI.login);
 
   const handleSubmit = ({ email, password }) => {
     request(email, password);
+    const user = jwtDecode(data);
+    console.log('user: ', user);
   };
 
   return (

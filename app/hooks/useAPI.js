@@ -11,7 +11,7 @@ export const useAPI = (apiFunc) => {
       const { data } = await apiFunc(...args);
       setLoading(false);
       setError((prevState) => ({ ...prevState, isError: false, errorMessage: '' }));
-      setData(() => [...data]);
+      setData(() => data);
     } catch (err) {
       setLoading(false);
       setData(() => []);
