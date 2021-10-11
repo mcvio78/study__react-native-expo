@@ -32,4 +32,4 @@ const removeToken = async () => {
   }
 };
 
-export const authStorage = { storeToken, getUser, removeToken };
+export const authStorage = { storeToken, getToken, getUser, removeToken };
