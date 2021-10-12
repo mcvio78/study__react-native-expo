@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { Screen } from '../components/Screen';
 import { AppForm, AppFormField, AppFormSubmitButton, AppErrorMessage } from '../components/forms';
 import { authAPI } from '../api/auth';
-import { useAuth } from '../auth/useAuth';
+import { useAuth } from '../hooks/useAuth';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label('Email'),
@@ -21,8 +21,8 @@ export const LoginScreen = () => {
       const result = await authAPI.login(email, password);
       setError('');
       logIn(result.data);
-    } catch (err) {
-      setError(err.data.error);
+    } catch (error) {
+      setError(error.data.error);
     }
   };
 
