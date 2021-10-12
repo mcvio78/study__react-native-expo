@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import getEnvVars from '../../environment';
 import { cache } from '../utility/cache';
+import { authStorage } from '../auth/storage';
 
 const { apiUrl, mode } = getEnvVars();
 
@@ -13,12 +14,12 @@ export const apiClient = axios.create({
 if (mode === 'development') {
   // Add a request interceptor
   apiClient.interceptors.request.use(
-    function (config) {
-      // Do something before request is sent
+    async (config) => {
+      const token = await authStorage.getToken();
+      if (token) config.headers = { 'x-auth-token': token };
       return config;
     },
-    function (error) {
-      // Do something with request error
+    (error) => {
       return Promise.reject(error);
     },
   );
@@ -30,7 +31,7 @@ if (mode === 'development') {
       return response;
     },
     function (error) {
-      // outside 2xx
+      // other than 2xx
       return Promise.reject(error.response);
     },
   );
