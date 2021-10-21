@@ -17,6 +17,7 @@ export const useAPI = (apiFunc) => {
       setLoading(false);
       setData('');
       setError(true);
+      return err;
     }
   };
 
